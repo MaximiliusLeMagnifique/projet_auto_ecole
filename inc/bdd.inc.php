@@ -1,0 +1,27 @@
+<?php
+	
+$hote = '127.0.0.1';
+$port = '1521';
+$service = 'XE';
+$utilisateur = 'XXX';
+$motdepasse = 'XXX';
+
+$lien_base =
+"oci:dbname=(DESCRIPTION =
+(ADDRESS_LIST =
+	(ADDRESS =
+		(PROTOCOL = TCP)
+		(Host = ".$hote .")
+		(Port = ".$port."))
+)
+(CONNECT_DATA =
+	(SERVICE_NAME = ".$service.")
+)
+);charset=UTF8";
+
+try {
+	$cnx = new PDO($lien_base, $utilisateur, $motdepasse);
+} catch (PDOException $e) {
+	echo $e->getMessage();
+}
+
